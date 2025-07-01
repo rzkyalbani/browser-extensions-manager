@@ -1,17 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/src/style.css" rel="stylesheet">
-	<title>BEM</title>
+	<title>Browser Extensions Manager</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="./src/assets/images/favicon-32x32.png">
 </head>
 
-<body>
-	<p class="font-primary">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim tempora commodi officiis error necessitatibus incidunt consequatur perferendis, facere minima dolores soluta aliquid! Id ducimus excepturi error voluptatum illo vel a qui nostrum consequatur. Nam saepe modi cumque incidunt eius error odit mollitia omnis vitae repudiandae ad molestiae, deserunt unde nihil.
-	</p>
+<body class="bg-blue-50 dark:bg-slate-950">
+	<div class="container mx-auto px-4 py-5">
+		<header class="flex justify-between items-center bg-white px-3 py-2 rounded-xl shadow-md">
+			<div>
+				<img src="./src/assets/images/logo.svg" alt="Logo">
+			</div>
+			<label for="ThemeToggle"
+				class="group flex justify-center items-center p-3 rounded-md bg-gray-200 transition-colors has-checked:bg-slate-700">
+				<input type="checkbox" id="ThemeToggle" class="peer sr-only" />
+
+				<span
+					class="transition-[inset-inline-start] peer-checked:start-6 peer-checked:*:first:hidden *:last:hidden peer-checked:*:last:block">
+					<img src="./src/assets/images/icon-moon.svg" alt="Theme Toogle">
+					<img src="./src/assets/images/icon-sun.svg" alt="Theme Toogle">
+				</span>
+			</label>
+
+		</header>
+
+		<main>
+			<h1 class="font-extrabold text-4xl text-center text-slate-800 mt-8">Extensions List</h1>
+			<div class="flex justify-center gap-7 mt-5">
+				<button
+					class="bg-red-600 text-white px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer hover:bg-red-700">All</button>
+				<button
+					class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer">Active</button>
+				<button
+					class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer">Inactive</button>
+			</div>
+
+			<section class="mt-8">
+				<div class="bg-white p-5 mb-5 rounded-xl shadow-md clear-both">
+					<div>
+						<img src="./src/assets/images/logo-devlens.svg" alt="Dev Lens" class="float-left mr-3">
+						<div>
+							<h3 class="font-bold text-2xl text-slate-800">DevLens</h3>
+							<p class="text-slate-800 text-[1.1rem]">Lorem ipsum dolor sit amet, consectetur adipisicing
+								elit.</p>
+						</div>
+					</div>
+					<div class="mt-5 flex justify-between items-center">
+						<button
+							class="bg-white text-slate-600 px-4 py-2 rounded-full font-bold cursor-pointer border border-zinc-300">Remove</button>
+						<label for="ActivateExtension"
+							class="relative block h-6 w-11 rounded-full bg-red-600 transition-colors [-webkit-tap-highlight-color:_transparent] has-checked:bg-green-600">
+							<input type="checkbox" id="ActivateExtension" class="peer sr-only" />
+
+							<span
+								class="absolute inset-y-0 start-0 m-1 size-4 rounded-full bg-white transition-[inset-inline-start] peer-checked:start-5"></span>
+						</label>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
 
 	<script type="module" src="src/main.js"></script>
 </body>

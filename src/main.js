@@ -1,5 +1,5 @@
 import $ from 'cash-dom'
-import { getCards } from './utils/utils.js'
+import { getCards, updateCards } from './utils/utils.js'
 
 const $toggleTheme = $('#ThemeToggle')
 const $root = $('html')
@@ -24,31 +24,31 @@ $($toggleTheme).on('change', function () {
 // Mengambil data
 getCards()
 
-const extensions = JSON.parse(localStorage.getItem('extensions'))
-
-if (extensions.length === 0) location.reload()
+if (JSON.parse(localStorage.getItem('extensions')).length === 0) location.reload()
 
 $('.card-toggle').on('change', function () {
     const isChecked = $(this).prop('checked')
     const $card = $(this).closest('.card')
     const $cardId = $card.data('id')
+    const extensions = JSON.parse(localStorage.getItem('extensions'))
 
     const newExtensions = extensions.map(v => {
         if (v.id === $cardId) return { ...v, isActive: isChecked }
         return v
     })
-
+    console.log(newExtensions)
     localStorage.setItem('extensions', JSON.stringify(newExtensions))
-    location.reload()
 })
 
 $('.remove-extension').on('click', function () {
-    // let confirmed = confirm('Do you want to remove this extension?')
+    let confirmed = confirm('Do you want to remove this extension?')
     let $card = $(this).closest('.card')
     const $cardId = $card.data('id')
 
-    const newExtensions = extensions.filter(v => v.id !== $cardId)
+    if (confirmed) {
+        const newExtensions = extensions.filter(v => v.id !== $cardId)
 
-    localStorage.setItem('extensions', JSON.stringify(newExtensions))
-    location.reload()
+        localStorage.setItem('extensions', JSON.stringify(newExtensions))
+        location.reload()
+    }
 })

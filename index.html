@@ -10,8 +10,9 @@
 </head>
 
 <body class="bg-blue-50 dark:bg-gray-900">
-	<div class="container mx-auto px-4 py-5">
-		<header class="flex justify-between items-center bg-white px-3 py-2 rounded-xl shadow-md dark:bg-slate-800">
+	<div class="container mx-auto px-4 py-5 lg:px-7 lg:py-8">
+		<header
+			class="flex justify-between items-center bg-white px-3 py-2 rounded-xl shadow-md dark:bg-slate-800 lg:px-5 lg:py-3 lg:mt-4">
 			<div>
 				<svg xmlns="http://www.w3.org/2000/svg" width="179" height="41" fill="#" viewBox="0 0 179 41">
 					<g clip-path="url(#a)">
@@ -29,7 +30,7 @@
 				</svg>
 			</div>
 			<label for="ThemeToggle"
-				class="group flex justify-center items-center p-2 rounded-md bg-gray-200 transition-colors has-checked:bg-gray-700 cursor-pointer">
+				class="group flex justify-center items-center p-2 lg:p-4 rounded-md lg:rounded-lg bg-gray-200 transition-colors has-checked:bg-gray-700 cursor-pointer">
 				<input type="checkbox" id="ThemeToggle" class="peer sr-only" />
 
 				<span
@@ -42,17 +43,20 @@
 		</header>
 
 		<main>
-			<h1 class="font-extrabold text-4xl text-center text-gray-800 mt-8 dark:text-gray-50">Extensions List</h1>
-			<div class="flex justify-center gap-7 mt-5">
-				<button
-					class="bg-red-700 text-white px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-red-500 dark:text-slate-800">All</button>
-				<button
-					class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-slate-800 dark:text-gray-50 dark:ring dark:ring-gray-50/50">Active</button>
-				<button
-					class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-slate-800 dark:text-gray-50 dark:ring dark:ring-gray-50/50">Inactive</button>
+			<div class="lg:flex lg:justify-between lg:items-center lg:mt-7 lg:mb-3">
+				<h1 class="font-extrabold text-4xl text-center text-gray-800 mt-8 dark:text-gray-50">Extensions List
+				</h1>
+				<div class="flex justify-center gap-7 mt-5">
+					<button
+						class="bg-red-700 text-white px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-red-500 dark:text-slate-800">All</button>
+					<button
+						class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-slate-800 dark:text-gray-50 dark:ring dark:ring-gray-50/50">Active</button>
+					<button
+						class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-slate-800 dark:text-gray-50 dark:ring dark:ring-gray-50/50">Inactive</button>
+				</div>
 			</div>
 
-			<section class="mt-8" id="main"></section>
+			<section class="mt-8 lg:grid lg:grid-cols-3 lg:gap-6" id="main"></section>
 		</main>
 	</div>
 

@@ -1,5 +1,5 @@
 import $ from 'cash-dom'
-import { getCards, updateCards } from './utils/utils.js'
+import { getCards } from './utils/utils.js'
 
 const $toggleTheme = $('#ThemeToggle')
 const $root = $('html')
@@ -24,8 +24,6 @@ $($toggleTheme).on('change', function () {
 // Mengambil data
 getCards()
 
-if (JSON.parse(localStorage.getItem('extensions')).length === 0) location.reload()
-
 $('.card-toggle').on('change', function () {
     const isChecked = $(this).prop('checked')
     const $card = $(this).closest('.card')
@@ -36,7 +34,7 @@ $('.card-toggle').on('change', function () {
         if (v.id === $cardId) return { ...v, isActive: isChecked }
         return v
     })
-    console.log(newExtensions)
+
     localStorage.setItem('extensions', JSON.stringify(newExtensions))
 })
 
@@ -44,6 +42,7 @@ $('.remove-extension').on('click', function () {
     let confirmed = confirm('Do you want to remove this extension?')
     let $card = $(this).closest('.card')
     const $cardId = $card.data('id')
+    const extensions = JSON.parse(localStorage.getItem('extensions'))
 
     if (confirmed) {
         const newExtensions = extensions.filter(v => v.id !== $cardId)
@@ -52,3 +51,17 @@ $('.remove-extension').on('click', function () {
         location.reload()
     }
 })
+
+if (localStorage.getItem('category') !== null) {
+    $('.category-btn').attr('data-category-state', 'inactive')
+    $(`[data-category="${localStorage.getItem('category')}"]`).attr('data-category-state', 'active')
+}
+
+$('.category-btn').on('click', function () {
+    $('.category-btn').attr('data-category-state', 'inactive')
+    $(this).attr('data-category-state', 'active')
+
+    localStorage.setItem('category', $(this).attr('data-category'))
+    location.reload()
+})
+

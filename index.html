@@ -30,7 +30,7 @@
 				</svg>
 			</div>
 			<label for="ThemeToggle"
-				class="group flex justify-center items-center p-2 lg:p-4 rounded-md lg:rounded-lg bg-gray-200 transition-colors has-checked:bg-gray-700 cursor-pointer">
+				class="group flex justify-center items-center p-2 lg:p-4 rounded-md lg:rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors has-checked:bg-gray-700 has-checked:hover:bg-gray-600 cursor-pointer">
 				<input type="checkbox" id="ThemeToggle" class="peer sr-only" />
 
 				<span
@@ -47,12 +47,9 @@
 				<h1 class="font-extrabold text-4xl text-center text-gray-800 mt-8 dark:text-gray-50">Extensions List
 				</h1>
 				<div class="flex justify-center gap-7 mt-5">
-					<button
-						class="bg-red-700 text-white px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-red-500 dark:text-slate-800">All</button>
-					<button
-						class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-slate-800 dark:text-gray-50 dark:ring dark:ring-gray-50/50">Active</button>
-					<button
-						class="bg-white text-slate-800 px-5 py-2 rounded-full font-medium shadow-md text-lg cursor-pointer dark:bg-slate-800 dark:text-gray-50 dark:ring dark:ring-gray-50/50">Inactive</button>
+					<button class="category-btn" data-category-state="active" data-category="all">All</button>
+					<button class="category-btn" data-category-state="inactive" data-category="active">Active</button>
+					<button class="category-btn" data-category-state="inactive" data-category="inactive">Inactive</button>
 				</div>
 			</div>
 

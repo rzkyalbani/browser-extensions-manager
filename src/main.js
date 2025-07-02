@@ -1,4 +1,5 @@
 import $ from 'cash-dom'
+import { getCards } from './utils/utils.js'
 
 const $toggleTheme = $('#ThemeToggle')
 const $root = $('html')
@@ -18,4 +19,36 @@ $($toggleTheme).on('change', function () {
         $root.removeClass('dark')
         localStorage.setItem('theme', 'light')
     }
+})
+
+// Mengambil data
+getCards()
+
+const extensions = JSON.parse(localStorage.getItem('extensions'))
+
+if (extensions.length === 0) location.reload()
+
+$('.card-toggle').on('change', function () {
+    const isChecked = $(this).prop('checked')
+    const $card = $(this).closest('.card')
+    const $cardId = $card.data('id')
+
+    const newExtensions = extensions.map(v => {
+        if (v.id === $cardId) return { ...v, isActive: isChecked }
+        return v
+    })
+
+    localStorage.setItem('extensions', JSON.stringify(newExtensions))
+    location.reload()
+})
+
+$('.remove-extension').on('click', function () {
+    // let confirmed = confirm('Do you want to remove this extension?')
+    let $card = $(this).closest('.card')
+    const $cardId = $card.data('id')
+
+    const newExtensions = extensions.filter(v => v.id !== $cardId)
+
+    localStorage.setItem('extensions', JSON.stringify(newExtensions))
+    location.reload()
 })

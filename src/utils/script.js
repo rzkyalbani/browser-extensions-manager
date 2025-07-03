@@ -1,9 +1,10 @@
 import $ from 'cash-dom'
+import { getAllExtensions, updateExtensions } from './storage.js'
 
 async function getExtensions() {
-	let extensions
+	let extensions;
 
-	let category = localStorage.getItem('category')
+	const category = localStorage.getItem('category')
 
 	if (
 		localStorage.getItem('extensions') === null || JSON.parse(localStorage.getItem('extensions')).length == 0
@@ -11,10 +12,10 @@ async function getExtensions() {
 		const response = await fetch('/data.json')
 		extensions = await response.json()
 
-		localStorage.setItem('extensions', JSON.stringify(extensions))
+		updateExtensions(extensions)
 	}
 
-	let rawData = extensions = JSON.parse(localStorage.getItem('extensions'))
+	let rawData = getAllExtensions()
 
 	if (!category || category === 'all') {
 		extensions = rawData

@@ -1,5 +1,5 @@
 import $ from 'cash-dom'
-import { getCards } from './utils/utils.js'
+import { getCards } from './utils/script.js'
 
 const $toggleTheme = $('#ThemeToggle')
 const $root = $('html')
@@ -22,9 +22,9 @@ $($toggleTheme).on('change', function () {
 })
 
 // Mengambil data
-getCards()
+await getCards()
 
-$('.card-toggle').on('change', function () {
+$('#main').on('change', '.card-toggle', function () {
     const isChecked = $(this).prop('checked')
     const $card = $(this).closest('.card')
     const $cardId = $card.data('id')
@@ -38,7 +38,7 @@ $('.card-toggle').on('change', function () {
     localStorage.setItem('extensions', JSON.stringify(newExtensions))
 })
 
-$('.remove-extension').on('click', function () {
+$('#main').on('click', '.remove-extension', function () {
     let confirmed = confirm('Do you want to remove this extension?')
     let $card = $(this).closest('.card')
     const $cardId = $card.data('id')
